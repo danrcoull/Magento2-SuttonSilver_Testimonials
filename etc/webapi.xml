@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route method="POST" url="/V1/suttonsilver-testimonials/testimonial">
+		<service class="SuttonSilver\Testimonials\Api\TestimonialRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="SuttonSilver_Testimonials::Testimonial_save"/>
+		</resources>
+	</route>
+	<route method="GET" url="/V1/suttonsilver-testimonials/search">
+		<service class="SuttonSilver\Testimonials\Api\TestimonialRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="SuttonSilver_Testimonials::Testimonial_view"/>
+		</resources>
+	</route>
+	<route method="GET" url="/V1/suttonsilver-testimonials/:testimonialId">
+		<service class="SuttonSilver\Testimonials\Api\TestimonialRepositoryInterface" method="getById"/>
+		<resources>
+			<resource ref="SuttonSilver_Testimonials::Testimonial_view"/>
+		</resources>
+	</route>
+	<route method="PUT" url="/V1/suttonsilver-testimonials/:testimonialId">
+		<service class="SuttonSilver\Testimonials\Api\TestimonialRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="SuttonSilver_Testimonials::Testimonial_update"/>
+		</resources>
+	</route>
+	<route method="DELETE" url="/V1/suttonsilver-testimonials/:testimonialId">
+		<service class="SuttonSilver\Testimonials\Api\TestimonialRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="SuttonSilver_Testimonials::Testimonial_delete"/>
+		</resources>
+	</route>
+	<route method="GET" url="/V1/suttonsilver-testimonials/testimonial">
+		<service class="SuttonSilver\Testimonials\Api\TestimonialManagementInterface" method="getTestimonial"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route method="PUT" url="/V1/suttonsilver-testimonials/testimonial">
+		<service class="SuttonSilver\Testimonials\Api\TestimonialManagementInterface" method="putTestimonial"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route method="DELETE" url="/V1/suttonsilver-testimonials/testimonial">
+		<service class="SuttonSilver\Testimonials\Api\TestimonialManagementInterface" method="deleteTestimonial"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+</routes>

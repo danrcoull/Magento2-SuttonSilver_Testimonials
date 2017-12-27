@@ -1,0 +1,21 @@
+{
+    "name": "suttonsilver/module-testimonials",
+    "description": "",
+    "license": "ocl",
+    "authors": [
+        {
+            "name": "Daniel Coull",
+            "email": "d.coull@suttonsilver.co.uk"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "SuttonSilver\\Testimonials\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}
