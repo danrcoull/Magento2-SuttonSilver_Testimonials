@@ -3,7 +3,17 @@
  * @var $block \SuttonSilver\Testimonials\Block\Testimonial\Slider
  */
 ?>
-<div>
-	<?= $block->getCollection() ?>
-	<?= __('Hello SuttonSilver_Testimonials::testimonial/slider.phtml') ?>
+<div class="container">
+	<?= $block->getLoadedCollection() ?>
+    <?php foreach($collection as $item): ?>
+        <div class="flex-container">
+            <div class="testimonial vertical-center center">
+                <?= $item->getTestimonial(); ?>
+                <div class="author">
+                    <span class="name"><?= $item->getName(); ?></span>
+                    <span class="email"><?= $item->getEmail(); ?></span>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
 </div>

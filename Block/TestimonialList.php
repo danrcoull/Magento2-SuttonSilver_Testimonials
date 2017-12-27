@@ -51,10 +51,13 @@ class TestimonialList  extends \Magento\Framework\View\Element\Template
             ->setPageSize($this->getLimit()) // only get 10 products
             ->setCurPage(1)  // first page (means limit 0,10)
             ->setOrder('created_at','ASC');
+
+        return $this;
     }
 
     public function getLoadedCollection()
     {
+        $this->getCollection();
         return $this->_collection->load();
     }
 }
