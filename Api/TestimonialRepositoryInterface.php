@@ -28,6 +28,14 @@ interface TestimonialRepositoryInterface
     public function getById($testimonialId);
 
     /**
+     * Retrieve Testimonial
+     * @param string $email
+     * @return \SuttonSilver\Testimonials\Api\Data\TestimonialInterface
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function getByEmail($email);
+
+    /**
      * Retrieve Testimonial matching the specified criteria.
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \SuttonSilver\Testimonials\Api\Data\TestimonialSearchResultsInterface

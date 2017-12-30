@@ -53,6 +53,17 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         $items = $this->collection->getItems();
         foreach ($items as $model) {
             $this->loadedData[$model->getId()] = $model->getData();
+            /* For Modify  You custom image field data */
+            if(!empty($this->loadedData[$model->getId()]['image'])){
+                $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                $storeManager = $objectManager->get('Magento\Store\Model\StoreManagerInterface');
+                $currentStore = $storeManager->getStore();
+                $media_url=$currentStore->getBaseUrl();
+
+                $image_name=$this->loadedData[$model->getId()]['image'];
+                unset($this->loadedData[$model->getId()]['image']);
+                $this->loadedData[$model->getId()]['image']=json_decode($image_name);
+            }
         }
         $data = $this->dataPersistor->get('suttonsilver_testimonials_testimonial');
         
@@ -62,6 +73,8 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             $this->loadedData[$model->getId()] = $model->getData();
             $this->dataPersistor->clear('suttonsilver_testimonials_testimonial');
         }
+
+
         
         return $this->loadedData;
     }

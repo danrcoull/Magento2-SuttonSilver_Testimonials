@@ -10,10 +10,13 @@ interface TestimonialInterface
     const UPDATED_AT = 'updated_at';
     const TESTIMONIAL = 'testimonial';
     const CREATED_AT = 'created_at';
-    const ENTITY_ID = 'entity_id';
     const NAME = 'name';
-    const STORE_ID = 'store_id';
     const TESTIMONIAL_ID = 'testimonial_id';
+    const PROFESSION = 'profession';
+    const IMAGE = 'image';
+    const ACTIVE = 'is_active';
+    const VERIFIED = 'is_verified';
+    const CUSTOMER = 'customer_id';
 
 
     /**
@@ -29,18 +32,6 @@ interface TestimonialInterface
      */
     public function setTestimonialId($testimonialId);
 
-    /**
-     * Get entity_id
-     * @return string|null
-     */
-    public function getEntityId();
-
-    /**
-     * Set entity_id
-     * @param string $entity_id
-     * @return \SuttonSilver\Testimonials\Api\Data\TestimonialInterface
-     */
-    public function setEntityId($entity_id);
 
     /**
      * Get name
@@ -81,18 +72,19 @@ interface TestimonialInterface
      */
     public function setTestimonial($testimonial);
 
-    /**
-     * Get store_id
-     * @return string|null
-     */
-    public function getStoreId();
 
     /**
-     * Set store_id
-     * @param string $store_id
+     * Get testimonial
+     * @return string|null
+     */
+    public function getProfession();
+
+    /**
+     * Set testimonial
+     * @param string $profession
      * @return \SuttonSilver\Testimonials\Api\Data\TestimonialInterface
      */
-    public function setStoreId($store_id);
+    public function setProfession($profession);
 
     /**
      * Get created_at
@@ -119,4 +111,56 @@ interface TestimonialInterface
      * @return \SuttonSilver\Testimonials\Api\Data\TestimonialInterface
      */
     public function setUpdatedAt($updated_at);
+
+    /**
+     * Get updated_at
+     * @return string|null
+     */
+    public function getImage();
+
+    /**
+     * Set updated_at
+     * @param string $imageName
+     * @return \SuttonSilver\Testimonials\Api\Data\TestimonialInterface
+     */
+    public function setImage($imageName);
+
+    /**
+     * Get is_active
+     * @return string|null
+     */
+    public function getIsActive();
+
+    /**
+     * Set is_active
+     * @param string $isActive
+     * @return \SuttonSilver\Testimonials\Api\Data\TestimonialInterface
+     */
+    public function setIsActive($isActive);
+
+    /**
+     * Get is_verified
+     * @return string|null
+     */
+    public function getIsVerified();
+
+    /**
+     * Set is_verified
+     * @param string $isVerified
+     * @return \SuttonSilver\Testimonials\Api\Data\TestimonialInterface
+     */
+    public function setIsVerified($isVerified);
+
+    /**
+     * Get customer_id
+     * @return string|null
+     */
+    public function getCustomerId();
+
+    /**
+     * Set customer_id
+     * @param string $customerId
+     * @return \SuttonSilver\Testimonials\Api\Data\TestimonialInterface
+     */
+    public function setCustomerId($customerId);
 }

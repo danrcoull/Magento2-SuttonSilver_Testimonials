@@ -1,0 +1,14 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Testimonials</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="SuttonSilver\Testimonials\Block\CreateTestimonial" name="customer_form" template="SuttonSilver_Testimonials::customer/form.phtml">
+            </block>
+        </referenceContainer>
+    </body>
+</page>

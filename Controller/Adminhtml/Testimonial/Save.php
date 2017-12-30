@@ -40,7 +40,14 @@ class Save extends \Magento\Backend\App\Action
                 $this->messageManager->addErrorMessage(__('This Testimonial no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
-        
+
+            // Add custom image field to data
+            if(isset($data['image']) && is_array($data['image'])){
+                $data['image']=json_encode($data['image']);
+            }
+
+           // die(var_dump($data));
+
             $model->setData($data);
         
             try {

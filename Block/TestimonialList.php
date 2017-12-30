@@ -47,7 +47,7 @@ class TestimonialList  extends \Magento\Framework\View\Element\Template
     private function getCollection()
     {
         $this->_collection = $this->collectionFactory->create()
-            ->addFieldToFilter('store_id', $this->getStoreId())
+            ->addStoreFilter($this->storeManager->getStore())
             ->setPageSize($this->getLimit()) // only get 10 products
             ->setCurPage(1)  // first page (means limit 0,10)
             ->setOrder('created_at','ASC');

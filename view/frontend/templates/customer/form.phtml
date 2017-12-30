@@ -1,0 +1,59 @@
+<form class="form testimonial-form"
+      action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
+      id="testimonial-form" method="POST"  enctype="multipart/form-data" data-hasrequired="* Required Fields" data-mage-init='{"validation":{},"imagevalidation":{}}'>
+    <input name="form_key" type="hidden" value="<?= $this->getFormKey(); ?>" />
+    <input name="store_id" type="hidden" value="<?= $this->getCurrentStoreId(); ?>" />
+    <input name="customer_id" type="hidden" value="<?= $this->getCustomer()->getId(); ?>" />
+        <div class="grid-container">
+            <fieldset class="fieldset grid-x grid-padding-x">
+                <div class="field firstname required medium-6 cell">
+                    <label for="firstname" class="label"><span><?= __('Firstname'); ?></span>
+                        <input type="text" <?php echo $this->getCustomer()->getFirstname() != '' ? 'readonly':'';?> name="firstname" class="input-text" value="<?= $this->getCustomer()->getFirstname(); ?>" data-validate='{"required":true}' placeholder="Firstname">
+                    </label>
+                </div>
+                <div class="field surname required medium-6 cell">
+                    <label for="surname" class="label"><span><?= __('Surname'); ?></span>
+                        <input type="text" <?php echo $this->getCustomer()->getLastname() != '' ? 'readonly':'';?> name="surname" class="input-text" value="<?= $this->getCustomer()->getLastname(); ?>"  placeholder="Surname">
+                    </label>
+                </div>
+                <div class="field email required medium-12 cell">
+                    <label for="email" class="label"><span><?= __('Email'); ?></span>
+                        <input type="email" readonly name="email" class="input-text"  data-validate='{"required":true,"validate-email":true}' value="<?= $this->getCustomer()->getEmail(); ?>" placeholder="Email">
+                    </label>
+                </div>
+
+                <div class="field image">
+                    <label class="label" for="image"><span><?php /* @escapeNotVerified */ echo __('Image') ?></span>
+                        <input name="image" id="image" title="<?php /* @escapeNotVerified */ echo __('image') ?>"  data-validate='{"validate-fileextensions":true}' class="" type="file" />
+                    </label>
+                </div>
+
+                <div class="field testimonial required medium-12 cell">
+                    <label for="testimonial" class="label"><span><?= __('Testimonial'); ?></span>
+                        <textarea  name="testimonial" class="input-text"  data-validate='{"required":true}'placeholder="Enter your testimonial"></textarea>
+                    </label>
+                </div>
+            </fieldset>
+            <?php echo $block->getChildHtml('form.additional.info'); ?>
+        </div>
+
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="Submit" class="action submit primary">
+                <span>Submit</span>
+            </button>
+        </div>
+    </div>
+</form>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "testimonial": {"formElement":"#testimonial-form","submitUrl":"<?= $this->getUrl('testimonials/post/index'); ?>"}
+        },
+        "*": {
+            "Magento_Ui/js/block-loader": "<?= $block->escapeJs($block->escapeUrl($block->getViewFileUrl('images/loader-1.gif'))) ?>"
+        }
+    }
+</script>

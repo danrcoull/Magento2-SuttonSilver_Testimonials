@@ -87,27 +87,35 @@
 				</item>
 			</argument>
 		</column>
-		<column name="entity_id">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="filter" xsi:type="string">text</item>
-					<item name="label" translate="true" xsi:type="string">entity_id</item>
-					<item name="editor" xsi:type="array">
-						<item name="editorType" xsi:type="string">text</item>
-						<item name="validation" xsi:type="array">
-							<item name="required-entry" xsi:type="boolean">false</item>
-						</item>
-					</item>
-				</item>
-			</argument>
+		<column name="is_active" component="Magento_Ui/js/grid/columns/select">
+			<settings>
+				<options class="Magento\Cms\Model\Block\Source\IsActive"/>
+				<filter>select</filter>
+				<editor>
+					<editorType>select</editorType>
+				</editor>
+				<dataType>select</dataType>
+				<label translate="true">Status</label>
+			</settings>
 		</column>
-		<actionsColumn class="SuttonSilver\Testimonials\Ui\Component\Listing\Column\TestimonialActions" name="actions">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="indexField" xsi:type="string">testimonial_id</item>
-				</item>
-			</argument>
-		</actionsColumn>
+		<column name="store_id" class="Magento\Store\Ui\Component\Listing\Column\Store">
+			<settings>
+				<label translate="true">Store View</label>
+				<bodyTmpl>ui/grid/cells/html</bodyTmpl>
+				<sortable>false</sortable>
+			</settings>
+		</column>
+		<column name="is_verified" component="Magento_Ui/js/grid/columns/select">
+			<settings>
+				<options class="Magento\Cms\Model\Block\Source\IsActive"/>
+				<filter>select</filter>
+				<editor>
+					<editorType>select</editorType>
+				</editor>
+				<dataType>select</dataType>
+				<label translate="true">Verified</label>
+			</settings>
+		</column>
 		<column name="name">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
@@ -136,47 +144,33 @@
 				</item>
 			</argument>
 		</column>
-		<column name="testimonial">
+
+		<column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
-					<item name="editor" xsi:type="array">
-						<item name="editorType" xsi:type="string">text</item>
-						<item name="validation" xsi:type="array">
-							<item name="required-entry" xsi:type="boolean">false</item>
-						</item>
-					</item>
+					<item name="filter" xsi:type="string">dateRange</item>
+					<item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+					<item name="dataType" xsi:type="string">date</item>
+					<item name="label" xsi:type="string" translate="true">Created</item>
 				</item>
 			</argument>
 		</column>
-		<column name="store_id">
+		<column name="updated_at" class="Magento\Ui\Component\Listing\Columns\Date">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
-					<item name="filter" xsi:type="string">text</item>
-					<item name="label" translate="true" xsi:type="string">store_id</item>
-					<item name="editor" xsi:type="array">
-						<item name="editorType" xsi:type="string">text</item>
-						<item name="validation" xsi:type="array">
-							<item name="required-entry" xsi:type="boolean">false</item>
-						</item>
-					</item>
+					<item name="filter" xsi:type="string">dateRange</item>
+					<item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+					<item name="dataType" xsi:type="string">date</item>
+					<item name="label" xsi:type="string" translate="true">Modified</item>
 				</item>
 			</argument>
 		</column>
-		<column name="created_at">
+		<actionsColumn class="SuttonSilver\Testimonials\Ui\Component\Listing\Column\TestimonialActions" name="actions">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
-					<item name="filter" xsi:type="string">text</item>
-					<item name="label" translate="true" xsi:type="string">created_at</item>
+					<item name="indexField" xsi:type="string">testimonial_id</item>
 				</item>
 			</argument>
-		</column>
-		<column name="updated_at">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="filter" xsi:type="string">text</item>
-					<item name="label" translate="true" xsi:type="string">updated_at</item>
-				</item>
-			</argument>
-		</column>
+		</actionsColumn>
 	</columns>
 </listing>

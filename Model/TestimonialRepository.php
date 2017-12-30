@@ -72,10 +72,7 @@ class TestimonialRepository implements testimonialRepositoryInterface
     public function save(
         \SuttonSilver\Testimonials\Api\Data\TestimonialInterface $testimonial
     ) {
-        /* if (empty($testimonial->getStoreId())) {
-            $storeId = $this->storeManager->getStore()->getId();
-            $testimonial->setStoreId($storeId);
-        } */
+
         try {
             $testimonial->getResource()->save($testimonial);
         } catch (\Exception $exception) {
@@ -96,6 +93,20 @@ class TestimonialRepository implements testimonialRepositoryInterface
         $testimonial->getResource()->load($testimonial, $testimonialId);
         if (!$testimonial->getId()) {
             throw new NoSuchEntityException(__('Testimonial with id "%1" does not exist.', $testimonialId));
+        }
+        return $testimonial;
+    }
+
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getByEmail($email)
+    {
+        $testimonial = $this->testimonialCollectionFactory->create();
+        $testimonial = $testimonial->addFieldToFilter('email', $email)->getFirstItem();
+        if (!$testimonial->getId()) {
+            throw new NoSuchEntityException(__('Testimonial with email "%1" does not exist.', $email));
         }
         return $testimonial;
     }

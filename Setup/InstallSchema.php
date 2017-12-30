@@ -34,16 +34,6 @@ class InstallSchema implements InstallSchemaInterface
 
         
         $table_suttonsilver_testimonials_testimonial->addColumn(
-            'entity_id',
-            \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
-            null,
-            ['identity' => true,'auto_increment' => true,'unsigned' => true],
-            'entity_id'
-        );
-        
-
-        
-        $table_suttonsilver_testimonials_testimonial->addColumn(
             'name',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             512,
