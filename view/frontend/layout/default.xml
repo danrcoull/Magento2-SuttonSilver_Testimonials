@@ -7,14 +7,11 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
-        <!-- for css file -->
-        <css src="SuttonSilver_Testimonials::css/swipper.min.css"/>
+
     </head>
     <body>
-        <referenceContainer name="page.bottom.container">
-            <container name="testimonial.slider" htmlTag="div" htmlClass="container">
-                <block class="SuttonSilver\Testimonials\Block\TestimonialList" name="testimonial.slider.list" template="SuttonSilver_Testimonials::testimonial/slider.phtml"/>
-            </container>
+        <referenceContainer name="page.wrapper">
+            <block class="SuttonSilver\Testimonials\Block\TestimonialList" name="testimonial.slider.list"  before="footer-container" template="SuttonSilver_Testimonials::testimonial/slider.phtml"/>
         </referenceContainer>
     </body>
 </page>

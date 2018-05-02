@@ -2,18 +2,47 @@
 /**
  * @var $block \SuttonSilver\Testimonials\Block\TestimonialList
  */
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$_store = $objectManager->get('Magento\Store\Model\StoreManagerInterface')->getStore(2);
 ?>
-<div class="container">
-	<?php $collection = $block->getLoadedCollection(); ?>
+<div class="grid-container row testimonial-container grid">
+	<?php $collection = $block->getLoadedCollection()->addStoreFilter($_store) ?>
+    <div id="testimonial-items" class="testimonial-items grid-x grid-x grid-margin-x">
 	<?php foreach($collection as $item): ?>
-        <div class="flex-container">
-            <div class="testimonial vertical-center center">
-                <?= $item->getTestimonial(); ?>
-                <div class="author">
-                    <span class="name"><?= $item->getName(); ?></span>
-                    <span class="email"><?= $item->getEmail(); ?></span>
+
+            <div class="testimonial cell small-12 medium-6 large-4">
+                <?php
+
+                $image =$item->getImage();
+
+
+
+                ?>
+                <?php if ($image != null) : ?>
+                    <div class="image">
+
+                    </div>
+                    <?php $image = json_decode($image); ?>
+                    <img src="<?= '/pub/media/wysiwyg/testimonials/' . $image[0]->name; ?> "/>
+                <?php else: ?>
+                    <div class="image">
+
+                    </div>
+                    <img src="https://via.placeholder.com/93x93?text=<?= $item->getName(); ?>"/>
+                <?php endif; ?>
+
+
+                <div class="inner">
+                    <div class="author">
+                        <span class="name"><?= $item->getName(); ?></span>
+                        <span class="profession"><?= $item->getProfession(); ?></span>
+                    </div>
+
+                    <div class="testimonial-text"><?= $item->getTestimonial(); ?></div>
+
                 </div>
             </div>
-        </div>
+
     <?php endforeach; ?>
+    </div>
 </div>

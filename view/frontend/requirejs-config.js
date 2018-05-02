@@ -1,10 +1,11 @@
 var config = {
     paths:{
-        swipper: 'SuttonSilver_Testimonials/js/swipper.min'
+        slick: 'SuttonSilver_Testimonials/js/slick.min'
     },
     shim: {
-        'swipper': {
-            deps: ['jquery']
+        "slick" : {
+            deps: ['jquery'],
+            exports: 'jQuery.fn.slick'
         },
     },
     map: {

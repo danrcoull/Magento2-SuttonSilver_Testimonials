@@ -2,51 +2,158 @@
 /**
  * @var $block \SuttonSilver\Testimonials\Block\Testimonial\Slider
  */
+
+
+
+
+$xlargeImage = $block->getImage('xlarge');
+$largeImage =  $block->getImage('large') != false ? $block->getImage('large') : $xlargeImage;
+$mediumImage =  $block->getImage('medium') != false ?  $block->getImage('medium') : $largeImage;
+$mobileImage = $block->getImage('small') != false ? $block->getImage('small') : $mediumImage;
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+$id = 1;
+$interchange = '';
+if($this->getRequest()->getFullActionName() == 'catalog_category_view') {
+    $_category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');//get current category
+
+    if ($_category->getLevel() == 2) {
+
+        switch ($_category->getId()) {
+            case '998':
+                $id = 1;
+                $interchange = 'data-interchange="[' . $this->getViewFileUrl('images/testimonials/categories/supermarket-smallport-480x300.png') . ' , small],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/supermarket-smalllandscape-640x727.png') . ' , small-landscape],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/supermarket-med-1024x663.png') . ' , medium],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/supermarket-large-1437x664.png') . ' , large],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/supermarket-xlarge-1800x664.png') . ' , xlarge]"';
+
+                break;
+            case '999':
+                $id = 2;
+                $interchange = 'data-interchange="[' . $this->getViewFileUrl('images/testimonials/categories/yachtvilla-smallport-480x300.png') . ' , small],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/yachtvilla-smalllandscape-640x727.png') . ' , small-landscape],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/villayacht-med-1024x663.png') . ' , medium],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/villayacht-large-1437x664.png') . ' , large],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/villayacht-xlarge-1800x664.png') . ' , xlarge]"';
+
+                break;
+            case '1000':
+                $id = 3;
+                $interchange =  'data-interchange="[' . $this->getViewFileUrl('images/testimonials/categories/offshore-smallport-480x300.png') . ' , small],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/offshore-smalllandscape-640x300.png') . ' , small-landscape],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/watersports-med-1024x663.png') . ' , medium],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/offshore-large-1437x664.png') . ' , large],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/offshore-xlarge-1800x664.png') . ' , xlarge]"';
+
+                break;
+        }
+    } else {
+
+        foreach ($_category->getParentCategories() as $parent) {
+
+
+            switch ($parent->getId()) {
+                case '998':
+                    $id = 1;
+                    $interchange = 'data-interchange="[' . $this->getViewFileUrl('images/testimonials/categories/supermarket-smallport-480x300.png') . ' , small],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/supermarket-smalllandscape-640x727.png') . ' , small-landscape],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/supermarket-med-1024x663.png') . ' , medium],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/supermarket-large-1437x664.png') . ' , large],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/supermarket-xlarge-1800x664.png') . ' , xlarge]"';
+
+                    break 2;
+                case '999':
+                    $id = 2;
+                    $interchange = 'data-interchange="[' . $this->getViewFileUrl('images/testimonials/categories/yachtvilla-smallport-480x300.png') . ' , small],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/yachtvilla-smalllandscape-640x727.png') . ' , small-landscape],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/villayacht-med-1024x663.png') . ' , medium],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/villayacht-large-1437x664.png') . ' , large],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/villayacht-xlarge-1800x664.png') . ' , xlarge]"';
+
+                    break 2;
+                case '1000':
+                    $id = 3;
+                    $interchange =  'data-interchange="[' . $this->getViewFileUrl('images/testimonials/categories/offshore-smallport-480x300.png') . ' , small],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/offshore-smalllandscape-640x300.png') . ' , small-landscape],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/watersports-med-1024x663.png') . ' , medium],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/offshore-large-1437x664.png') . ' , large],
+                            [ ' . $this->getViewFileUrl('images/testimonials/categories/offshore-xlarge-1800x664.png') . ' , xlarge]"';
+
+                    break 2;
+            }
+        }
+    }
+}else{
+    $interchange =  'data-interchange="[' . $this->getViewFileUrl('images/testimonials/landing-smallport-480x300.png') . ' , small],
+                            [ ' . $this->getViewFileUrl('images/testimonials/landing-smalllandscape-640x300.png') . ' , small-landscape],
+                            [ ' . $this->getViewFileUrl('images/testimonials/landing-med-1024x300.png') . ' , medium],
+                            [ ' . $this->getViewFileUrl('images/testimonials/landing-large-1437x300.png') . ' , large],
+                            [ ' . $this->getViewFileUrl('images/testimonials/landing-xlarge-1800x664.png') . ' , xlarge]"';
+
+}
+$_store = $objectManager->get('Magento\Store\Model\StoreManagerInterface')->getStore($id);
 ?>
-<div class="row">
-    <div class="large-12">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <?php $collection = $block->getLoadedCollection() ?>
-                <?php foreach ($collection as $item): ?>
+<div class="grid-container full row testimonial-container">
+    <?php $collection = $block->getLoadedCollection()->addStoreFilter($_store) ?>
 
-                    <div class="swiper-slide">
-                            <?php $image = json_decode($item->getImage()); ?>
-                            <?php if($image->name) : ?>
-                            <div class="image">
-                                    <img src="<?= '/pub/media/wysiwyg/testimonials/'.$image->name; ?> " />
-                            </div>
-                            <?php endif ; ?>
+    <img    src="https://via.placeholder.com/1024x768?text="
+            class="fs-interchange background-image"
+            <?php echo $interchange;?>
+            title="Testimonials">
 
-                        <div class="inner">
-                            <?= $item->getTestimonial(); ?>
-                            <div class="author">
-                                <span class="name"><?= $item->getName(); ?></span>
-                                <span class="email"><?= $item->getEmail(); ?></span>
-                            </div>
-                        </div>
+    <div class="overlay">
+        <h4><?= __('Testimonials'); ?></h4>
+    <div id="testimonial-items" class="testimonial-items grid-x grid-x grid-margin-x">
+        <?php foreach ($collection as $item): ?>
+
+            <div class="testimonial cell small-12 medium-6 large-4">
+                <?php
+
+                $image =$item->getImage();
+
+
+
+                ?>
+                <?php if ($image != null) : ?>
+                    <div class="image">
+
+                    </div>
+                    <?php $image = json_decode($image); ?>
+                    <img src="<?= '/pub/media/wysiwyg/testimonials/' . $image[0]->name; ?> "/>
+                <?php else: ?>
+                    <div class="image">
+
+                    </div>
+                    <img src="https://via.placeholder.com/93x93?text=<?= $item->getName(); ?>"/>
+                <?php endif; ?>
+
+                <div class="inner">
+                    <div class="author">
+                        <span class="name"><?= $item->getName(); ?></span>
+                        <span class="profession"><?= $item->getProfession(); ?></span>
                     </div>
 
-                <?php endforeach; ?>
-            </div>
-            <!-- If we need pagination -->
-            <div class="swiper-pagination"></div>
+                    <div class="testimonial-text"><?= $item->getTestimonial(); ?></div>
 
-            <!-- If we need navigation buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-        </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
     </div>
 </div>
 
+
 <script type="text/x-magento-init">
     {
-        "#swiper-container": {
+        "#testimonial-items": {
             "slider": {}
         },
         "*": {
             "Magento_Ui/js/block-loader": "<?= $block->escapeJs($block->escapeUrl($block->getViewFileUrl('images/loader-1.gif'))) ?>"
         }
     }
+
 
 </script>

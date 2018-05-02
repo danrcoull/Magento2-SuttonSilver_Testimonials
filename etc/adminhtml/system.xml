@@ -21,6 +21,32 @@
 					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
 				</field>
 			</group>
+			<group id="background" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+				<field id="small_background" translate="label" type="image" sortOrder="6" showInDefault="1" showInStore="1" showInWebsite="1" >
+					<label>Upload Small Image Background</label>
+					<backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+					<upload_dir config="system/filesystem/media" scope_info="1">testimonials/store</upload_dir>
+					<base_url type="media" scope_info="1">testimonials/store</base_url>
+				</field>
+				<field id="medium_background" translate="label" type="image" sortOrder="6" showInDefault="1" showInStore="1" showInWebsite="1" >
+					<label>Upload Medium Image Background</label>
+					<backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+					<upload_dir config="system/filesystem/media" scope_info="1">testimonials/store</upload_dir>
+					<base_url type="media" scope_info="1">testimonials/store</base_url>
+				</field>
+				<field id="large_background" translate="label" type="image" sortOrder="6" showInDefault="1" showInStore="1" showInWebsite="1" >
+					<label>Upload Large Image Background</label>
+					<backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+					<upload_dir config="system/filesystem/media" scope_info="1">testimonials/store</upload_dir>
+					<base_url type="media" scope_info="1">testimonials/store</base_url>
+				</field>
+				<field id="xlarge_background" translate="label" type="image" sortOrder="6" showInDefault="1" showInStore="1" showInWebsite="1" >
+					<label>Upload xLarge Image Background</label>
+					<backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+					<upload_dir config="system/filesystem/media" scope_info="1">testimonials/store</upload_dir>
+					<base_url type="media" scope_info="1">testimonials/store</base_url>
+				</field>
+			</group>
 		</section>
 	</system>
 </config>
